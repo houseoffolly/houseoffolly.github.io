@@ -47,28 +47,28 @@ export const alumni: { person: Person; tenure: string }[] = [
 const lionel = p(
   'Lionel Wong',
   'https://web.mit.edu/zyzzyva/www/academic.html',
-  'Distinguished Recurring Fellow',
+  'Distinguished Recurring Fellow in Translating Dinner Arguments into Probabilistic Programs',
 )
-const sarah = p('Sarah Wu', 'https://sarahawu.github.io/', 'Visiting Fellow in Causal Inquiry')
-const junyi = p('Junyi Chu', 'https://jchu10.github.io/', 'Visiting Fellow in Curiosity')
-const jeanette = p('Jeanette Andrews', 'https://www.jeanetteandrews.com/', 'Artist-in-Residence (Perceptual Illusions)')
+const sarah = p('Sarah Wu', 'https://sarahawu.github.io/', 'Visiting Fellow in Too Many Cooks: Counterfactual Blame Attribution for Kitchen Messes')
+const junyi = p('Junyi Chu', 'https://jchu10.github.io/', 'Visiting Fellow in the Developmental Science of Poking Things to See What Happens')
+const jeanette = p('Jeanette Andrews', 'https://www.jeanetteandrews.com/', 'Artist-in-Residence; Chair of Making the Last Slice Disappear (Perceptual Illusions)')
 
 export const visits: Visit[] = [
-  { person: p('Dae Houlihan', 'https://daeh.info/', 'Visiting Fellow in Affective Computing'), start: '2025-09-17', end: '2025-09-19' },
+  { person: p('Dae Houlihan', 'https://daeh.info/', 'Visiting Fellow in Computed Appraisals of How Everyone Feels About the Thermostat'), start: '2025-09-17', end: '2025-09-19' },
   { person: lionel, start: '2025-09-17', end: '2025-09-25' },
   { person: junyi, start: '2025-10-03', end: '2025-10-03' },
   { person: sarah, start: '2025-11-18', end: '2025-11-20' },
-  { person: p('Katherine Mohr', 'https://katherinemohr.github.io/', 'Winter Visiting Fellow'), start: '2025-12-16', end: '2025-12-17' },
+  { person: p('Katherine Mohr', 'https://katherinemohr.github.io/', 'Winter Visiting Fellow in Compiling the Group Chat into Optimized Dinner Plans'), start: '2025-12-16', end: '2025-12-17' },
   { person: jeanette, start: '2026-01-12', end: '2026-01-14' },
   { person: lionel, start: '2026-01-18', end: '2026-01-22' },
-  { person: p('Alex Hwang', 'https://alexhwang.github.io/', 'Visiting Fellow in Applied Photonics'), start: '2026-03-24', end: '2026-03-27' },
+  { person: p('Alex Hwang', 'https://alexhwang.github.io/', 'Visiting Fellow in Mid-Infrared Detection of Leftovers That Have Gone Bad'), start: '2026-03-24', end: '2026-03-27' },
   { person: sarah, start: '2026-06-28', end: '2026-06-29' },
-  { person: p('Michael Brocidiacono', 'https://molecularmodelinglab.github.io/members/michael-brocidiacono.html', 'Visiting Fellow in Molecular Modeling; Duke of Disco'), start: '2026-07-21', end: '2026-07-22' },
-  { person: p('Ke Fang', 'https://kefangpsych.github.io/intro.html', 'Visiting Fellow in Psychology'), start: '2026-09-11', end: '2026-09-13' },
+  { person: p('Michael Brocidiacono', 'https://molecularmodelinglab.github.io/members/michael-brocidiacono.html', 'Duke of Disco; Visiting Fellow in Docking Small Molecules to the Couch'), start: '2026-07-21', end: '2026-07-22' },
+  { person: p('Ke Fang', 'https://kefangpsych.github.io/intro.html', 'Visiting Fellow in the Emergence of Collective Norms Around Whose Turn It Is to Do the Dishes'), start: '2026-09-11', end: '2026-09-13' },
   { person: jeanette, start: '2026-09-29', end: '2026-10-01', room: 'Guest Room' },
   { person: junyi, start: '2026-10-01', end: '2026-10-02', room: 'Guest Room' },
   {
-    person: p('Katalina Toth', 'https://katalinatoth.github.io/katalinatoth/', 'Visiting Fellow in Quantitative Social Science'),
+    person: p('Katalina Toth', 'https://katalinatoth.github.io/katalinatoth/', 'Visiting Fellow in the Spread of Conspiracy Theories About Who Ate the Last Yogurt'),
     start: '2026-09-28', // date added to the site; used only for ordering
   },
 ]
