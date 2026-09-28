@@ -8,7 +8,7 @@ export type Person = {
 export type Visit = {
   person: Person
   start: string // ISO date, inclusive
-  end: string // ISO date, inclusive
+  end?: string // ISO date, inclusive; omit for an open-ended, ongoing visit
   room?: string // defaults to the Living Room
 }
 
@@ -67,12 +67,19 @@ export const visits: Visit[] = [
   { person: p('Ke Fang', 'https://kefangpsych.github.io/intro.html', 'Visiting Fellow in Psychology'), start: '2026-09-11', end: '2026-09-13' },
   { person: jeanette, start: '2026-09-29', end: '2026-10-01', room: 'Guest Room' },
   { person: junyi, start: '2026-10-01', end: '2026-10-02', room: 'Guest Room' },
+  {
+    person: p('Katalina Toth', 'https://katalinatoth.github.io/katalinatoth/', 'Visiting Fellow in Quantitative Social Science'),
+    start: '2026-09-28', // date added to the site; used only for ordering
+  },
 ]
 
-const today = new Date().toISOString().slice(0, 10)
+// Local YYYY-MM-DD, so visits flip over at local midnight rather than UTC midnight.
+const today = new Date().toLocaleDateString('en-CA')
 
-/** Visits that have started (ongoing visits count as past). */
-export const pastVisits = visits.filter((v) => v.start <= today)
+/** Visits that have started, including ones still in progress. */
+export const startedVisits = visits.filter((v) => v.start <= today)
+export const currentVisits = startedVisits.filter((v) => !v.end || v.end >= today)
+export const finishedVisits = startedVisits.filter((v) => v.end && v.end < today)
 export const upcomingVisits = visits.filter((v) => v.start > today)
 
 /** Unique visitors, most recent visit first, with all their visits attached. */
@@ -86,15 +93,18 @@ export function visitingFellows() {
   return [...byName.values()].sort((a, b) => lastStart(b) - lastStart(a))
 }
 
+// Open-ended (ongoing) visits sort first.
 const lastStart = (e: { visits: Visit[] }) =>
-  Math.max(...e.visits.map((v) => Date.parse(v.start)))
+  Math.max(...e.visits.map((v) => (v.end ? Date.parse(v.start) : Infinity)))
 
 const DAY = 86_400_000
 
-export const nightsHosted = pastVisits.reduce(
-  (sum, v) => sum + Math.max(1, (Date.parse(v.end) - Date.parse(v.start)) / DAY),
+export const nightsHosted = startedVisits.reduce(
+  (sum, v) => sum + Math.max(1, (Date.parse(v.end ?? today) - Date.parse(v.start)) / DAY),
   0,
 )
+
+export const visitLabel = (v: Visit) => (v.end ? formatRange(v.start, v.end) : 'In residence now')
 
 export function formatRange(start: string, end: string) {
   const s = new Date(start + 'T12:00:00')

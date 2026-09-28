@@ -1,5 +1,18 @@
 import { useState } from 'react'
-import { alumni, board, formatRange, news, nightsHosted, pastVisits, upcomingVisits, visitingFellows, type Person, type Visit } from './data'
+import {
+  alumni,
+  board,
+  currentVisits,
+  finishedVisits,
+  news,
+  nightsHosted,
+  startedVisits,
+  upcomingVisits,
+  visitingFellows,
+  visitLabel,
+  type Person,
+  type Visit,
+} from './data'
 
 const fellows = visitingFellows()
 
@@ -203,12 +216,12 @@ function Pillars() {
 }
 
 function FollyIndex() {
-  const repeat = fellows.filter((f) => f.visits.filter((v) => pastVisits.includes(v)).length > 1).length
-  const visited = new Set(pastVisits.map((v) => v.person.name)).size
+  const repeat = fellows.filter((f) => f.visits.filter((v) => startedVisits.includes(v)).length > 1).length
+  const visited = new Set(startedVisits.map((v) => v.person.name)).size
   const stats = [
     { value: nightsHosted, label: 'Scholar-nights hosted since founding' },
     { value: visited, label: 'Distinct Visiting Fellows' },
-    { value: pastVisits.length, label: 'Official convenings (visits)' },
+    { value: startedVisits.length, label: 'Official convenings (visits)' },
     { value: repeat, label: 'Scholar(s) foolish enough to return' },
     { value: 0, label: 'Dishes washed the same day (median)' },
     { value: '∞', label: 'Open questions raised at dinner' },
@@ -287,7 +300,7 @@ function People() {
           <PersonCard
             key={person.slug}
             person={person}
-            meta={visits.map((v) => formatRange(v.start, v.end)).join(' · ')}
+            meta={visits.map(visitLabel).join(' · ')}
           />
         ))}
       </div>
@@ -334,7 +347,7 @@ function ConveningList({ visits }: { visits: Visit[] }) {
     <ol className="mt-10 divide-y divide-fog border-y border-fog">
       {visits.map((v) => (
         <li key={v.person.slug + v.start} className="grid gap-2 py-5 sm:grid-cols-[14rem_1fr_auto] sm:items-center">
-          <p className="font-semibold text-cardinal">{formatRange(v.start, v.end)}</p>
+          <p className="font-semibold text-cardinal">{visitLabel(v)}</p>
           <div className="flex items-center gap-4">
             <img src={portrait(v.person)} alt="" className="h-12 w-12 rounded-full object-cover" />
             <div>
@@ -358,9 +371,24 @@ function ConveningList({ visits }: { visits: Visit[] }) {
 
 function Events() {
   const upcoming = [...upcomingVisits].sort((a, b) => Date.parse(a.start) - Date.parse(b.start))
-  const past = [...pastVisits].sort((a, b) => Date.parse(b.start) - Date.parse(a.start))
+  const past = [...finishedVisits].sort((a, b) => Date.parse(b.start) - Date.parse(a.start))
   return (
     <section id="events" className="scroll-mt-28 mx-auto max-w-7xl px-4 py-20 sm:px-8">
+      {currentVisits.length > 0 && (
+        <div className="mb-20">
+          <h2 className="flex items-center gap-4 font-serif text-4xl sm:text-5xl">
+            <span className="relative flex h-3 w-3">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cardinal opacity-60" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-cardinal" />
+            </span>
+            Now in Residence
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg text-ink/80">
+            Scholars currently convening at HOF. Please keep your voice down after midnight; they are thinking.
+          </p>
+          <ConveningList visits={currentVisits} />
+        </div>
+      )}
       {upcoming.length > 0 && (
         <div className="mb-20">
           <h2 className="font-serif text-4xl sm:text-5xl">Upcoming Convenings</h2>
