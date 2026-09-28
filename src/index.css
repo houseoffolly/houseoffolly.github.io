@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-cardinal: #8c1515;
+  --color-cardinal-dark: #820000;
+  --color-ink: #2e2d29;
+  --color-stone: #f4f4f4;
+  --color-fog: #dad7cb;
+  --font-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white font-sans text-ink antialiased;
+}
