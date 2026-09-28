@@ -63,6 +63,7 @@ export const visits: Visit[] = [
   { person: lionel, start: '2026-01-18', end: '2026-01-22' },
   { person: p('Alex Hwang', 'https://alexhwang.github.io/', 'Visiting Fellow in Applied Photonics'), start: '2026-03-24', end: '2026-03-27' },
   { person: sarah, start: '2026-06-28', end: '2026-06-29' },
+  { person: p('Michael Brocidiacono', 'https://molecularmodelinglab.github.io/members/michael-brocidiacono.html', 'Visiting Fellow in Molecular Modeling; Duke of Disco'), start: '2026-07-21', end: '2026-07-22' },
   { person: p('Ke Fang', 'https://kefangpsych.github.io/intro.html', 'Visiting Fellow in Psychology'), start: '2026-09-11', end: '2026-09-13' },
   { person: jeanette, start: '2026-09-29', end: '2026-10-01', room: 'Guest Room' },
   { person: junyi, start: '2026-10-01', end: '2026-10-02', room: 'Guest Room' },
