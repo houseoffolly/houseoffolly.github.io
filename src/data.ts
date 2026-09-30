@@ -67,6 +67,7 @@ export const visits: Visit[] = [
   { person: p('Ke Fang', 'https://kefangpsych.github.io/intro.html', 'Visiting Fellow in the Emergence of Collective Norms Around Whose Turn It Is to Do the Dishes'), start: '2026-09-11', end: '2026-09-13' },
   { person: jeanette, start: '2026-09-29', end: '2026-10-01', room: 'Guest Room' },
   { person: junyi, start: '2026-10-01', end: '2026-10-02', room: 'Guest Room' },
+  { person: p("Misha O'Keeffe", 'https://www.mishaokeeffe.com/', 'Visiting Fellow in the Social Learning of Who Actually Restocks the Paper Towels'), start: '2026-10-17', end: '2026-10-19' },
   {
     person: p('Katalina Toth', 'https://katalinatoth.github.io/katalinatoth/', 'Visiting Fellow in the Spread of Conspiracy Theories About Who Ate the Last Yogurt'),
     start: '2026-09-28', // date added to the site; used only for ordering
