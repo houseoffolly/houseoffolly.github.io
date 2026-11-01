@@ -22,7 +22,7 @@ const p = (name: string, url: string, title: string): Person => ({
 export const board: Person[] = [
   p(
     'Arnav Verma',
-    'https://scholar.google.ca/citations?user=9KFdv9IAAAAJ&hl=en',
+    'https://arnavadventures.github.io/',
     'Co-Director; Denis Diderot Professor of Snack Procurement',
   ),
   p(
